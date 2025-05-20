@@ -1,0 +1,687 @@
+/* Reset dan Font Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f7f9fc;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container Utama */
+.recommendation-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Header Halaman */
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.recommendation-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.recommendation-header h1::after {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  bottom: 0;
+  left: 15%;
+  border-radius: 3px;
+}
+
+.food-emoji {
+  font-size: 2.2rem;
+  vertical-align: middle;
+  margin-left: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Konten Metode Rekomendasi */
+.recommendation-selection-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.recommendation-info {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.recommendation-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.recommendation-info p {
+  color: #546e7a;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.method-info-list {
+  margin-left: 1.5rem;
+  color: #546e7a;
+}
+
+.method-info-list li {
+  margin-bottom: 0.5rem;
+}
+
+.method-info-list li strong {
+  color: #388e3c;
+}
+
+/* Kartu Metode */
+.method-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.method-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.method-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.method-card.active {
+  border-color: #4CAF50;
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+}
+
+.method-icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  padding: 1rem;
+  background: #f1f8e9;
+  border-radius: 50%;
+  height: 4.5rem;
+  width: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.method-content {
+  flex: 1;
+}
+
+.method-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.method-description {
+  color: #546e7a;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.method-button {
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(76, 175, 80, 0.2);
+}
+
+.method-button:hover {
+  background: linear-gradient(90deg, #388E3C, #689F38);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-container {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  color: white;
+}
+
+.modal-header h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close-button:hover {
+  transform: scale(1.1);
+}
+
+.modal-content {
+  padding: 2rem;
+}
+
+/* Form Styles */
+.modal-form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #455a64;
+  display: flex;
+  align-items: center;
+}
+
+.emoji-icon {
+  margin-left: 8px;
+  font-size: 1.2rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.9rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+  background-color: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: #bdbdbd;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-button {
+  padding: 0.8rem 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  color: #546e7a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-button:hover {
+  background-color: #f5f5f5;
+}
+
+.submit-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 3px 10px rgba(76, 175, 80, 0.2);
+}
+
+.submit-button:hover {
+  background: linear-gradient(90deg, #388E3C, #689F38);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.submit-button:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Selected Method Badge */
+.selected-method {
+  background-color: #f1f8e9;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selected-method p {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #455a64;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.method-badge {
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
+}
+
+.reset-button {
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #546e7a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reset-button:hover {
+  background-color: #f5f5f5;
+  border-color: #bdbdbd;
+}
+
+.reset-icon {
+  font-size: 1rem;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+  box-shadow: 0 3px 10px rgba(211, 47, 47, 0.1);
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
+
+.error-icon {
+  font-size: 1.2rem;
+}
+
+/* Result Container */
+.result-container {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  padding: 1.5rem 2rem;
+  color: white;
+}
+
+.result-header h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.result-emoji {
+  font-size: 1.4rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Recommendation Result Styles */
+.recommendation-result {
+  padding: 1.5rem 0;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Panel Styles */
+.result-panel {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.panel-header {
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  padding: 1rem 1.5rem;
+  color: white;
+}
+
+.panel-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.panel-icon {
+  font-size: 1.3rem;
+}
+
+/* BMI Result Container */
+.bmi-result-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bmi-panel {
+  background-color: #fff;
+}
+
+.bmi-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.bmi-metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f1f8e9;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.bmi-metric-item:hover {
+  transform: translateY(-2px);
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.3rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #546e7a;
+  font-weight: 500;
+}
+
+/* Nutrition Grid */
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.nutrition-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.2s;
+  border: 1px solid #e0e0e0;
+}
+
+.nutrition-item:hover {
+  transform: translateY(-2px);
+  background-color: #f1f8e9;
+  border-color: #8BC34A;
+}
+
+.nutrition-icon {
+  font-size: 1.8rem;
+}
+
+.nutrition-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.nutrition-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.nutrition-label {
+  font-size: 0.8rem;
+  color: #546e7a;
+}
+
+/* Meal Time Panel */
+.meal-time-panel {
+  margin-bottom: 1.5rem;
+}
+
+.meal-time-details {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+
+.meal-time-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meal-time-label {
+  font-size: 0.9rem;
+  color: #546e7a;
+  font-weight: 500;
+}
+
+.meal-time-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Food Recommendations */
+.food-recommendations-panel {
+  margin-bottom: 1.5rem;
+}
+
+.food-count {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.food-description {
+  padding: 1.5rem 1.5rem 0;
+  color: #546e7a;
+  font-size: 1rem;
+}
+
+.foods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
