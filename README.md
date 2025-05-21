@@ -10,17 +10,17 @@ The project consists of two main parts:
 
 ```
 nutrition-recommendation-system/
-├── backend/             # Flask backend
-│   ├── app/             # Application code
-│   ├── data/            # Dataset files
-│   ├── models/          # ML models
-│   └── run.py           # Entry point
-└── frontend/            # React frontend
-    ├── public/          # Static files
-    └── src/             # React source code
-        ├── components/  # Reusable components
-        ├── pages/       # Page components
-        └── services/    # API services
+├── backend/             
+│   ├── app/            
+│   ├── data/         
+│   ├── models/          
+│   └── run.py          
+└── frontend/          
+    ├── public/          
+    └── src/            
+        ├── components/  
+        ├── pages/       
+        └── services/   
 ```
 
 ## Features
@@ -32,7 +32,7 @@ nutrition-recommendation-system/
 
 ## Prerequisites
 
-- Python 3.7+ 
+- Python 3.7+ Recommended is 3.10
 - Node.js 14+ and npm/yarn
 - Git (optional, for cloning the repository)
 3. Open your browser and navigate to http://localhost:3000
